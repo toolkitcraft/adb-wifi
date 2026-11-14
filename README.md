@@ -54,7 +54,7 @@ adbwifi -d tablet install app-release.apk
 You need Google's adb (Android SDK Platform-Tools) too; adbwifi finds it by
 itself and tells you how to install it if it is missing.
 
-Download from [Releases](https://github.com/toolkitcraft/adb-wifi/releases/latest):
+Download from [Releases](https://github.com/toolkitcraft/adb-wifi/releases) (0.1.0 is a pre-release):
 
 | OS | File |
 |---|---|
@@ -69,7 +69,8 @@ Download from [Releases](https://github.com/toolkitcraft/adb-wifi/releases/lates
 
 ```bash
 cd ~/Downloads
-base=https://github.com/toolkitcraft/adb-wifi/releases/latest/download
+version=v0.1.0                             # newest version on the Releases page
+base=https://github.com/toolkitcraft/adb-wifi/releases/download/$version
 file=adbwifi-macos-arm64.tar.gz            # Intel Mac: adbwifi-macos-x64.tar.gz
 curl -fLO "$base/$file" -fLO "$base/SHA256SUMS.txt"
 grep "$file" SHA256SUMS.txt | shasum -a 256 -c -   # must say OK
@@ -90,7 +91,8 @@ developer cannot be verified", run once:
 
 ```bash
 cd ~/Downloads
-base=https://github.com/toolkitcraft/adb-wifi/releases/latest/download
+version=v0.1.0                             # newest version on the Releases page
+base=https://github.com/toolkitcraft/adb-wifi/releases/download/$version
 file=adbwifi-linux-x64.tar.gz
 curl -fLO "$base/$file" -fLO "$base/SHA256SUMS.txt"
 grep "$file" SHA256SUMS.txt | sha256sum -c -      # must say OK
@@ -106,7 +108,8 @@ on Debian/Ubuntu); network devices do not.
 
 ```powershell
 cd $env:USERPROFILE\Downloads
-$base = "https://github.com/toolkitcraft/adb-wifi/releases/latest/download"
+$version = "v0.1.0"   # newest version on the Releases page
+$base = "https://github.com/toolkitcraft/adb-wifi/releases/download/$version"
 Invoke-WebRequest "$base/adbwifi-windows-x64.zip" -OutFile adbwifi-windows-x64.zip
 Invoke-WebRequest "$base/SHA256SUMS.txt" -OutFile SHA256SUMS.txt
 (Get-FileHash adbwifi-windows-x64.zip -Algorithm SHA256).Hash   # compare with SHA256SUMS.txt
