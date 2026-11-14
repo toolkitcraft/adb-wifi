@@ -1,0 +1,20 @@
+name: adb_wifi_cli
+description: The adbwifi command-line tool.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+resolution: workspace
+
+executables:
+  adbwifi: adbwifi
+
+dependencies:
+  adb_wifi_core:
+    path: ../../packages/core
+  args: ^2.7.0
+dev_dependencies:
+  test: ^1.31.0
+  lints: ^6.1.0

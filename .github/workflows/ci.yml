@@ -1,0 +1,41 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, windows-latest, ubuntu-latest]
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.9.2
+      - run: dart pub get
+      - run: dart format --output=none --set-exit-if-changed .
+      - run: dart analyze --fatal-infos
+      - name: Test each package that has tests
+        run: |
+          for pkg in packages/core apps/cli; do
+            if [ -d "$pkg/test" ]; then
+              (cd "$pkg" && dart test)
+            fi
+          done
+      - name: Compile the executable and run it
+        env:
+          EXE: build/adbwifi${{ runner.os == 'Windows' && '.exe' || '' }}
+        run: |
+          dart compile exe apps/cli/bin/adbwifi.dart -o "$EXE"
+          "$EXE" version

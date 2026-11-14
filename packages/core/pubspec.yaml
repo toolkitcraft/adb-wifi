@@ -1,0 +1,14 @@
+name: adb_wifi_core
+description: >-
+  Core logic for adbwifi: find adb, check the network, connect and diagnose
+  Android devices over Wi-Fi. Pure Dart, no Flutter.
+version: 0.1.0
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+resolution: workspace
+dev_dependencies:
+  test: ^1.31.0
+  lints: ^6.1.0

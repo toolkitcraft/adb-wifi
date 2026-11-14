@@ -1,0 +1,16 @@
+# Dart
+.dart_tool/
+build/
+coverage/
+*.exe
+
+# Local tool output and logs (may contain device details)
+*.log
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Claude Code personal settings
+.claude/settings.local.json

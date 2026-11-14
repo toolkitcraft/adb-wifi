@@ -1,0 +1,11 @@
+# Workspace root: one `dart pub get` here resolves every package below,
+# with a single shared pubspec.lock.
+name: adb_wifi_workspace
+publish_to: none
+
+environment:
+  sdk: ^3.9.0
+
+workspace:
+  - packages/core
+  - apps/cli
