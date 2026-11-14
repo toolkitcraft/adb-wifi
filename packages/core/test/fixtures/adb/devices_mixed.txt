@@ -1,0 +1,8 @@
+* daemon not running; starting now at tcp:5037
+* daemon started successfully
+List of devices attached
+192.168.1.202:5555     device product:rk3288 model:YC119R device:rk3288 transport_id:3
+192.168.1.77:5555      offline transport_id:5
+0123456789ABCDEF       unauthorized usb:1-1 transport_id:2
+5a3f9c21               no permissions (user in plugdev group; are your udev rules wrong?); see [http://developer.android.com/tools/device.html] usb:3-2 transport_id:4
+

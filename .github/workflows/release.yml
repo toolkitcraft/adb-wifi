@@ -1,0 +1,98 @@
+# Builds adbwifi for every OS when a version tag (v0.1.0) is pushed, and
+# puts the files on a DRAFT GitHub Release. Check the draft, then publish it.
+name: release
+
+on:
+  push:
+    tags: ['v*.*.*']
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    strategy:
+      fail-fast: true
+      matrix:
+        include:
+          - os: macos-15 # Apple Silicon
+            name: macos-arm64
+          - os: macos-15-intel # last Intel image, supported until 2027
+            name: macos-x64
+          - os: windows-latest
+            name: windows-x64
+          - os: ubuntu-latest
+            name: linux-x64
+    runs-on: ${{ matrix.os }}
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dart-lang/setup-dart@v1
+        with:
+          sdk: 3.9.2
+
+      - name: The tag must match the version in the code
+        run: |
+          tag="${GITHUB_REF_NAME#v}"
+          code=$(sed -n "s/^const toolVersion = '\(.*\)';/\1/p" apps/cli/lib/src/version.dart)
+          pubspec=$(sed -n 's/^version: //p' apps/cli/pubspec.yaml | tr -d '\r')
+          echo "tag=$tag code=$code pubspec=$pubspec"
+          test "$tag" = "$code" && test "$tag" = "$pubspec"
+
+      - run: dart pub get
+      - run: dart analyze --fatal-infos
+      - name: Tests
+        run: |
+          (cd packages/core && dart test)
+          (cd apps/cli && dart test)
+
+      - name: Compile
+        run: |
+          mkdir -p dist
+          exe=adbwifi${{ runner.os == 'Windows' && '.exe' || '' }}
+          dart compile exe apps/cli/bin/adbwifi.dart -o "dist/$exe"
+          "dist/$exe" version
+          cp LICENSE README.md dist/
+
+      - name: Package (macOS, Linux)
+        if: runner.os != 'Windows'
+        # tar keeps the "executable" permission; a bare download would not.
+        run: tar -czf "adbwifi-${{ matrix.name }}.tar.gz" -C dist adbwifi LICENSE README.md
+
+      - name: Package (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: Compress-Archive -Path dist\* -DestinationPath adbwifi-${{ matrix.name }}.zip
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: adbwifi-${{ matrix.name }}
+          path: adbwifi-${{ matrix.name }}.*
+          if-no-files-found: error
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # create the release
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/download-artifact@v4
+        with:
+          path: files
+          merge-multiple: true
+      - name: Checksums
+        run: |
+          cd files
+          sha256sum adbwifi-* > SHA256SUMS.txt
+          cat SHA256SUMS.txt
+      - name: Draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" files/* \
+            --draft \
+            --title "adbwifi ${GITHUB_REF_NAME#v}" \
+            --notes "See CHANGELOG.md. Install steps: README.md → Install. Builds are not signed yet."

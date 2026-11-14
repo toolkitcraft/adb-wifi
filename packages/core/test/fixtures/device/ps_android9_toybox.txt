@@ -1,0 +1,3 @@
+USER           PID  PPID     VSZ    RSS WCHAN            ADDR S NAME
+root             1     0   54321   3210 SyS_epoll_wait      0 S init
+u0_a77        4567   612 4012345 112233 SyS_epoll_wait      0 S com.eroxii.vending

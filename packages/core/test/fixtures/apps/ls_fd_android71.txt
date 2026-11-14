@@ -1,0 +1,5 @@
+lrwx------ u0_a52   u0_a52            2026-11-12 10:00 0 -> /dev/null
+lrwx------ u0_a52   u0_a52            2026-11-12 10:00 23 -> /dev/ttyS1
+lrwx------ u0_a52   u0_a52            2026-11-12 10:00 24 -> socket:[45678]
+lr-x------ u0_a52   u0_a52            2026-11-12 10:00 31 -> /data/app/com.eroxii.vending-1/base.apk
+lrwx------ u0_a52   u0_a52            2026-11-12 10:00 40 -> /dev/ttyUSB0

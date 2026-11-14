@@ -1,0 +1,14 @@
+--------- beginning of main
+11-14 10:22:33.123  1234  1250 I VendingApp: motor 3 started
+11-14 10:22:33.200   512   530 I ActivityManager: Start proc 1300:com.other.app/u0a46
+11-14 10:22:33.300  1234  1250 D VendingApp: request Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.abc.def
+11-14 10:22:33.400  1234  1251 W SerialPort: /dev/ttyS1 timeout token=abc123&user=me
+11-14 10:22:34.000  1234  1234 E AndroidRuntime: FATAL EXCEPTION: main
+11-14 10:22:34.001  1234  1234 E AndroidRuntime: Process: com.eroxii.vending, PID: 1234
+11-14 10:22:34.100  2002  2002 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***
+11-14 10:22:34.101  2002  2002 F DEBUG   : pid: 1234, tid: 1234, name: oxii.vending  >>> com.eroxii.vending <<<
+11-14 10:22:34.102  2002  2002 F DEBUG   :     #00 pc 0001a2b4  /system/lib/libc.so (abort+63)
+11-14 10:22:34.500   512   600 I ActivityManager: Process com.eroxii.vending (pid 1234) has died
+11-14 10:22:35.000   512   530 E ActivityManager: ANR in com.eroxii.vending
+11-14 10:22:35.100  1300  1300 I OtherApp: unrelated
+11-14 10:22:35.200  1234  1250 I VendingApp:

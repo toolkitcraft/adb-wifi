@@ -27,11 +27,22 @@ Then read the existing code in packages/core and apps/cli.
 
 ## Current state
 
-- Step 0 (project setup) is done: Dart 3.9 pub workspace, packages
-  `adb_wifi_core` (packages/core, empty) and `adb_wifi_cli` (apps/cli, only
-  the `version` command, 3 tests passing), CI workflow, README, SECURITY.md.
-- Nothing is committed yet.
-- Next is ROADMAP step 1: find adb.
+- Steps 0 to 11 are written (by the AI, at my request) and tested with
+  fakes: 137 core tests, 77 CLI tests, format and analyze clean, native
+  exe builds on macOS. Status 🧪 in docs/ROADMAP.md.
+- Checked on the real Mac without a device: `version`, `doctor` (no
+  device, a public IP, the Mac's own IP = real "connection refused"),
+  `devices`, `info`, `--help`.
+- NOT yet checked on the real YC119R tablet: doctor ladder, find (real
+  scan), connect (IP change, --wait), devices merge, logs (real logcat,
+  Ctrl+C), install, shell, pull/push, disconnect, app info. Fixtures for
+  Android 4.4/7 `ps`, getprop, dumpsys, ls fd are typed, not captured.
+- Note: the Mac was on a different /24 than the tablet when last checked;
+  put both on the same Wi-Fi before testing.
+- Committed on branch `release-0.1.0` and tagged `v0.1.0` (preview
+  release, draft on GitHub). Merge the branch into main.
+- Next: real-device checks with the tablet (ask first), replace typed
+  fixtures with captures, then mark steps ✅.
 
 ## Your job: give me the source code for ALL of version 1; I TYPE IT
 

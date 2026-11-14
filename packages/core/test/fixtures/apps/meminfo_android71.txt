@@ -1,0 +1,16 @@
+Applications Memory Usage (in Kilobytes):
+Uptime: 123456 Realtime: 123456
+
+** MEMINFO in pid 2345 [com.eroxii.vending] **
+                   Pss  Private  Private  Swapped     Heap     Heap     Heap
+                 Total    Dirty    Clean    Dirty     Size    Alloc     Free
+                ------   ------   ------   ------   ------   ------   ------
+  Native Heap    12345    12300        0        0    20480    15000     5480
+  Dalvik Heap    20480    20400        0        0    32768    24576     8192
+        TOTAL    56789    40000     1234        0    53248    39576    13672
+
+ App Summary
+                       Pss(KB)
+                        ------
+           Java Heap:    20400
+               TOTAL:    56789       TOTAL SWAP PSS:        0
