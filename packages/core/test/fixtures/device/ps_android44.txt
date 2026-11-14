@@ -1,0 +1,7 @@
+USER     PID   PPID  VSIZE  RSS     WCHAN    PC         NAME
+root      1     0     1012   200   ffffffff 00000000 S /init
+root      180   1     890012 40012 ffffffff 00000000 S zygote
+system    512   180   998120 61200 ffffffff 00000000 S system_server
+u0_a45    1234  180   512340 41234 ffffffff 00000000 S com.eroxii.vending
+u0_a45    1290  180   498000 30100 ffffffff 00000000 S com.eroxii.vending:remote
+shell     2001  1     4400   600   c00f1234 b6f1a2c4 S /system/bin/sh

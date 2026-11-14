@@ -1,0 +1,26 @@
+Activity Resolver Table:
+  Non-Data Actions:
+      android.intent.action.MAIN:
+        5c1a2b3 com.eroxii.vending/.MainActivity filter 9d8e7f6
+
+Key Set Manager:
+  [com.eroxii.vending]
+      Signing KeySets: 52
+
+Packages:
+  Package [com.eroxii.vending] (4f3e2d1):
+    userId=10045
+    pkg=Package{8a7b6c5 com.eroxii.vending}
+    codePath=/data/app/com.eroxii.vending-1
+    resourcePath=/data/app/com.eroxii.vending-1
+    versionCode=42 minSdk=19 targetSdk=28
+    versionName=1.4.2
+    flags=[ HAS_CODE ALLOW_CLEAR_USER_DATA ALLOW_BACKUP ]
+    timeStamp=2026-11-12 15:40:21
+    firstInstallTime=2026-11-05 10:12:01
+    lastUpdateTime=2026-11-12 15:40:22
+    installerPackageName=null
+
+Hidden system packages:
+  Package [com.eroxii.vending] (1a2b3c4):
+    versionCode=1 minSdk=19 targetSdk=28

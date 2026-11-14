@@ -6,20 +6,24 @@ Every item comes from a real problem in `lessons.md`.
 
 Build order. Each step is small and tested before the next.
 
+Status: ✅ done and checked on a real device · 🧪 built and tested with fakes
+(and on the Mac where no device is needed), real-device check still to do ·
+⏳ not started.
+
 | Step | Feature | Command | Status |
 |---|---|---|---|
 | 0 | Project setup, `version`, CI | `adbwifi version` | ✅ done |
-| 1 | Find adb (SDK paths, `ANDROID_HOME`, Homebrew, PATH; Mac/Windows/Linux) | `adbwifi version` shows adb | ⏳ |
-| 2 | Run adb with a timeout (kill on hang) | — | ⏳ |
-| 3 | Doctor: my IP → same subnet (warning) → port 5555 (open / refused / no answer) → `adb connect` → state → device info | `adbwifi doctor [device]` | ⏳ |
-| 4 | Find devices on the local /24 (asks first) | `adbwifi find` | ⏳ |
-| 5 | Remember devices by serial | `adbwifi name`, `forget`, `info` | ⏳ |
-| 6 | Smart reconnect (rescan when the IP changed) + offline wait | `adbwifi connect <device> [--wait]` | ⏳ |
-| 7 | Clean device list (merge by serial, drop stale offline) | `adbwifi devices` | ⏳ |
-| 8 | App logs by PID (`pidof`/`--pid` on Android 7+, `ps` + computer-side filter on 4.4–6, follow restarts, keep crash/ANR lines) | `adbwifi logs --app <pkg>` | ⏳ |
-| 9 | Install with progress | `adbwifi install <apk>` | ⏳ |
-| 10 | Shell (root warning), pull, push, disconnect | `adbwifi shell`, `pull`, `push`, `disconnect` | ⏳ |
-| 11 | App info (version, PID, memory) | `adbwifi app info <pkg>` | ⏳ |
+| 1 | Find adb (SDK paths, `ANDROID_HOME`, Homebrew, PATH; Mac/Windows/Linux) | `adbwifi version` shows adb | 🧪 |
+| 2 | Run adb with a timeout (kill on hang) | — | 🧪 |
+| 3 | Doctor: my IP → same subnet (warning) → port 5555 (open / refused / no answer) → `adb connect` → state → device info | `adbwifi doctor [device]` | 🧪 |
+| 4 | Find devices on the local /24 (asks first) | `adbwifi find` | 🧪 |
+| 5 | Remember devices by serial | `adbwifi name`, `forget`, `info` | 🧪 |
+| 6 | Smart reconnect (rescan when the IP changed) + offline wait | `adbwifi connect <device> [--wait]` | 🧪 |
+| 7 | Clean device list (merge by serial, drop stale offline) | `adbwifi devices` | 🧪 |
+| 8 | App logs by PID (`pidof`/`--pid` on Android 7+, `ps` + computer-side filter on 4.4–6, follow restarts, keep crash/ANR lines) | `adbwifi logs --app <pkg>` | 🧪 |
+| 9 | Install with progress | `adbwifi install <apk>` | 🧪 |
+| 10 | Shell (root warning), pull, push, disconnect | `adbwifi shell`, `pull`, `push`, `disconnect` | 🧪 |
+| 11 | App info (version, PID, memory) | `adbwifi app info <pkg>` | 🧪 |
 
 Options for every command: `-d/--device`, `--timeout`, `--json`, `-v/--verbose`.
 

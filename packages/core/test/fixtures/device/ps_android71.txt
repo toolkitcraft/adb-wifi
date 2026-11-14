@@ -1,0 +1,4 @@
+USER      PID   PPID  VSIZE  RSS   WCHAN            PC  NAME
+root      1     0     9364   1476  SyS_epoll_ 0000000000 S /init
+root      320   1     1512340 66012 poll_sched 0000000000 S zygote
+u0_a52    2345  320   1678012 98004 SyS_epoll_ 0000000000 S com.eroxii.vending
