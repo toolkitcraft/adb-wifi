@@ -37,5 +37,6 @@ jobs:
         env:
           EXE: build/adbwifi${{ runner.os == 'Windows' && '.exe' || '' }}
         run: |
+          mkdir -p build  # dart compile exe does not create the folder
           dart compile exe apps/cli/bin/adbwifi.dart -o "$EXE"
           "$EXE" version
